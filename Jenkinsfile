@@ -76,7 +76,7 @@ pipeline{
           artifacts : [
             artifactId : 'my-app' ,
             type : 'jar' ,
-            file : 'target/my-app.jar']);
+            file : '/my-app.jar']);
       
       
       }
