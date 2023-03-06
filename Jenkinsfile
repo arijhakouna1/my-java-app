@@ -70,17 +70,21 @@ pipeline{
                     artifactPath = filesByGlob[0].path;
         
         nexusArtifactUploader (
-          nexusVersion : "nexus3",
-          protocol : "http",
-          nexusUrl : "192.168.1.178:8081",
-          groupId : pom.groupId ,
-          version : pom.version,
-          repository : "maven-releases",
-          credentialsId : "nexus-connection",
-          artifacts : [
-            artifactId : pom.artifactId,
-            type : pom.packaging,
-            file : artifactPath]);
+          nexusVersion: "nexus3",
+          protocol: "http",
+          nexusUrl: "192.168.1.178:8081",
+          groupId: pom.groupId ,
+          version: pom.version,
+          repository: "maven-releases",
+          credentialsId: "nexus-connection",
+          artifacts:[
+            artifactId: pom.artifactId,
+            type: pom.packaging,
+            file: artifactPath]
+          [artifactId: pom.artifactId,
+           classifier: '',
+           file: "pom.xml",
+           type: "pom"]]);
       
         }
       }
