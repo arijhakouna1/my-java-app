@@ -1,18 +1,45 @@
 pipeline{
   
     agent any
+    
   
   stages{
     
     stage("check out code"){
     
       steps{
-        with
-      
+        checkout scmGit(branches: [
+                        [name: '*/master']],
+                        extensions: [], 
+                        userRemoteConfigs: [[credentialsId: 'jenkins-git', 
+                        url: 'git@github.com:arijhakouna1/my-java-app.git']])
       
       }
     
     }
+    
+    stage("build"){
+      
+      steps{
+      
+        sh 'mvn clean install validate'
+        echo " I'm building the app "
+      
+      }
+   
+    }
+    
+    stage("Test"){
+      
+      steps{
+      
+        sh 'mvn verify test'
+        echo " I'm testing the app "
+      
+      }
+   
+    }
+    
   
     stage("nexus-deloy"){
     
