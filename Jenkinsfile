@@ -42,8 +42,21 @@ pipeline{
    
     }
     
+    stage("Test quality"){
+      
+      steps{
+        withSonarQubeEnv(credentialsId: 'sonarqube') {
+           sh 'mvn sonar:sonar'
+           echo " I'm testing the app "
+         }  
+       
+      
+      }
+   
+    }
+    
   
-    stage("nexus-deloy"){
+    /*stage("nexus-deloy"){
     
       steps{
         
@@ -63,7 +76,7 @@ pipeline{
       
       }
     }
-  
+  */
   }  
   
 
