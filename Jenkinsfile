@@ -64,21 +64,25 @@ pipeline{
     stage("nexus-deloy"){
     
       steps{
+        script {
+                    pom = readMavenPom file: "pom.xml";
+                    filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
+                    artifactPath = filesByGlob[0].path;
         
         nexusArtifactUploader (
           nexusVersion : "nexus3",
           protocol : "http",
           nexusUrl : "192.168.1.178:8081",
-          groupId : "com.mycompany.app" ,
-          version : "1.0-SNAPSHOT",
+          groupId : pom.groupId ,
+          version : pom.version,
           repository : "maven-releases",
           credentialsId : "nexus-connection",
           artifacts : [
-            artifactId : "my-app",
-            type : "jar",
-            file : "target/my-app-1.0-SNAPSHOT.jar"]);
+            artifactId : pom.artifactId,
+            type : pom.packaging,
+            file : artifactPath]);
       
-      
+        }
       }
     }
   
