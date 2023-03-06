@@ -4,6 +4,15 @@ pipeline{
   
   stages{
     
+    stage("check out code"){
+    
+      steps{
+        with
+      
+      
+      }
+    
+    }
   
     stage("nexus-deloy"){
     
