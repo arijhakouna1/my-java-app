@@ -66,7 +66,7 @@ pipeline{
       steps{
         
         nexusArtifactUploader (
-          nexusVersion : 'nexus 3',
+          nexusVersion : 'nexus3',
           protocol : 'http',
           nexusUrl : '192.168.1.178:8081',
           groupId : 'com.mycompany.app' ,
