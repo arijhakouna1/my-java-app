@@ -66,17 +66,17 @@ pipeline{
       steps{
         
         nexusArtifactUploader (
-          nexusVersion : 'nexus3',
-          protocol : 'http',
-          nexusUrl : '192.168.1.178:8081',
-          groupId : 'com.mycompany.app' ,
-          version : '1.0-SNAPSHOT',
-          repository : 'raoua' ,
-          credentialsId : 'nexus-connection' ,
+          nexusVersion : "nexus3",
+          protocol : "http",
+          nexusUrl : "192.168.1.178:8081",
+          groupId : "com.mycompany.app" ,
+          version : "1.0-SNAPSHOT",
+          repository : "raoua",
+          credentialsId : "nexus-connection",
           artifacts : [
-            artifactId : 'my-app' ,
-            type : 'jar' ,
-            file : '/my-app.jar']);
+            artifactId : "my-app",
+            type : "jar",
+            file : "/my-app.jar"]);
       
       
       }
