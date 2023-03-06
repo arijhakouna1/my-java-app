@@ -76,7 +76,7 @@ pipeline{
           artifacts : [
             artifactId : "my-app",
             type : "jar",
-            file : "my-script-new-try/target/my-app-1.0-SNAPSHOT.jar"]);
+            file : "target/my-app-1.0-SNAPSHOT.jar"]);
       
       
       }
