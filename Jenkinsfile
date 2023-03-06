@@ -80,7 +80,7 @@ pipeline{
           artifacts:[
             artifactId: pom.artifactId,
             type: pom.packaging,
-            file: artifactPath]
+            file: artifactPath],
           [artifactId: pom.artifactId,
            classifier: '',
            file: "pom.xml",
