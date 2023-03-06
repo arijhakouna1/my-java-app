@@ -1,9 +1,14 @@
 pipeline{
   
     agent any
-  tools {
-   maven 'apache-maven-3.9.0'
-  }
+  
+    triggers {
+        cron('*/1 * * * *')
+    }
+  
+    tools {
+       maven 'apache-maven-3.9.0'
+    }
   
   stages{
     
@@ -47,7 +52,7 @@ pipeline{
       steps{
         withSonarQubeEnv('sonarqube') {
            sh 'mvn sonar:sonar'
-           echo " I'm testing the app "
+           echo " I'm testing the quality of the app "
          }  
        
       
@@ -56,14 +61,14 @@ pipeline{
     }
     
   
-    /*stage("nexus-deloy"){
+    stage("nexus-deloy"){
     
       steps{
         
         nexusArtifactUploader (
           nexusVersion : 'nexus 3',
           protocol : 'http',
-          nexusUrl : 'localhost:8081',
+          nexusUrl : '192.168.1.178:8081',
           groupId : 'com.mycompany.app' ,
           version : '1.0-SNAPSHOT',
           repository : 'raoua' ,
@@ -71,12 +76,12 @@ pipeline{
           artifacts : [
             artifactId : 'my-app' ,
             type : 'jar' ,
-            file : 'my-app/target/my-app.jar']);
+            file : 'target/my-app.jar']);
       
       
       }
     }
-  */
+  
   }  
   
 
