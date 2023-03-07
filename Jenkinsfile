@@ -78,7 +78,7 @@ pipeline{
           repository: "maven-releases",
           credentialsId: "nexus-connection",
           artifacts:[
-            artifactId: pom.artifactId,
+            [artifactId: pom.artifactId,
             type: pom.packaging,
             file: artifactPath],
           [artifactId: pom.artifactId,
