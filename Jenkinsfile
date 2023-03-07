@@ -75,7 +75,7 @@ pipeline{
           nexusUrl: "192.168.1.178:8081",
           groupId: pom.groupId ,
           version: pom.version,
-          repository: "maven-releases",
+          repository: "raoua",
           credentialsId: "nexus-connection",
           artifacts:[
             [artifactId: pom.artifactId,
