@@ -2,9 +2,9 @@ pipeline{
   
     agent any
   
-    triggers {
+   /* triggers {
         cron('*/1 * * * *')
-    }
+    }*/
   
     tools {
        maven 'apache-maven-3.9.0'
