@@ -60,6 +60,13 @@ pipeline{
    
     }
     
+    stage('Docker Build') {
+    	agent any
+      steps {
+      	sh 'docker build -t arijhakouna1/my-java-app:latest .'
+      }
+    }
+    
   
     stage("nexus-deloy"){
     
