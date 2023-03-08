@@ -64,7 +64,7 @@ pipeline{
     	agent any
       steps {
       	sh 'docker build -t arijhakouna1/my-java-app:latest .'
-        sh ' docker run -d -t arijhakouna1/my-java-app:latest '
+        sh 'docker run -d -t arijhakouna1/my-java-app:latest '
       }
     }
     
@@ -83,7 +83,7 @@ pipeline{
           nexusUrl: "192.168.1.178:8081",
           groupId: pom.groupId ,
           version: pom.version,
-          repository: "raoua",
+          repository: "my-script-new-app",
           credentialsId: "nexus-connection",
           artifacts:[
             [artifactId: pom.artifactId,
