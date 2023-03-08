@@ -71,7 +71,7 @@ pipeline{
   
     stage("nexus-deloy"){
     
-      steps{
+    /*  steps{
         script {
                     pom = readMavenPom file: "pom.xml";
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
@@ -95,7 +95,12 @@ pipeline{
            type: "pom"]]);
       
         }
-      }
+      }*/
+                    steps{
+                      script{
+                        withDockerRegistry(credentialsId: 'nexus-connection', url: 'http://192.168.1.178:8081/repository/my-script-new-app/') 
+                        { dockerImage.push () }
+    } 
     }
   
   }  
