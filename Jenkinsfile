@@ -64,6 +64,7 @@ pipeline{
     	agent any
       steps {
       	sh 'docker build -t arijhakouna1/my-java-app:latest .'
+        sh ' docker run -d -t arijhakouna1/my-java-app:latest '
       }
     }
     
