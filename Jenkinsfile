@@ -98,7 +98,7 @@ pipeline{
       }*/
                     steps{
                       
-                      sh 'docker login -u admin --password-stdin admin123 http://192.168.1.178:8081/repository/my-script-new-app/'
+                      sh 'docker login -u admin -p admin123 http://192.168.1.178:8081/repository/my-script-new-app/'
                       script{
                         withDockerRegistry(credentialsId: 'nexus-connection', url: 'http://192.168.1.178:8081/repository/my-script-new-app/') 
                         { dockerImage.push () }
