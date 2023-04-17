@@ -10,7 +10,7 @@ pipeline{
   
   stages{
       stage("check out code"){
-          when {  expression { env.PROJECT = 'hello' }}
+          when {  expression { env.PROJECT == 'hello' }}
           steps{
               checkout scmGit(branches: [
                         [name: '*/master']],
@@ -27,7 +27,7 @@ pipeline{
       }
     }
       stage("nexus-deloy"){
-          when { expression{ env.PROJECT= 'hello' } }
+          when { expression{ env.PROJECT == 'hello' } }
           steps{
               script {
                     pom = readMavenPom file: "pom.xml";
