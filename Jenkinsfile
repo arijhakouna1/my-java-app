@@ -1,6 +1,10 @@
 pipeline{
     agent any
     tools { maven 'maven' }
+    environments {
+     URL = string
+     File = string
+    }
   stages{
     
       stage("build"){
@@ -33,7 +37,7 @@ pipeline{
         }*/
               withCredentials ([usernamePassword(credentialsId: 'nexus_pfe_key', passwordVarriable: 'admin', usernameVariable: 'admin')]) {
                File= "target/*.jar"
-                URL= "http://192.168.1.141:8081/repository/depot_soutenance"
+                URL= "http://192.168.1.141:8081/repository/depot_soutenance/"
                  sh 'curl -k -u admin:admin --upload-file "$File" "$URL"'    
               } }  }
 
