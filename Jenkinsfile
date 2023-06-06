@@ -21,18 +21,9 @@ pipeline{
          }   } }
       stage("nexus-deloy"){
           steps{
-           /*script {
-                    pom = readMavenPom file: "pom.xml";
-                    filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
-                    artifactPath = filesByGlob[0].path;
-         nexusArtifactUploader (
-          nexusVersion: "nexus3", protocol: "http", nexusUrl: "192.168.1.141:8081", groupId: pom.groupId , version: pom.version,
-          repository: "depot_soutenance", credentialsId: "nexus_pfe_key",
-          artifacts:[
-            [artifactId: pom.artifactId, type: pom.packaging, file: artifactPat]]);
-        }*/
            withCredentials ([usernamePassword(credentialsId: 'nexus_pfe_key', passwordVariable: 'arij', usernameVariable: 'admin')]) {
-                  sh 'curl -k --upload-file /var/jenkins_home/workspace/my_project/target/my-app-1.0-SNAPSHOT.jar -x POST http://192.168.1.141:8081/repository/depot_soutenance/'   
+                  sh 'curl -k -u admin:arij --upload-file /var/jenkins_home/workspace/my_project/target/my-app-1.0-SNAPSHOT.jar -x POST http://192.168.1.141:8081/repository/depot_soutenance/'
+               echo " I'm pushing to nexus "
               } }  }
 
 }
