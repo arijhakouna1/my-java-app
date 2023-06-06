@@ -16,7 +16,7 @@ pipeline{
       stage("Test quality"){
          steps{
              withSonarQubeEnv('sonarqube') {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin'
+                sh 'mvn sonar:sonar -Dsonar.login="admin" -Dsonar.password="admin123"'
                 echo " I'm testing the quality of the app "
          }   } }
       stage("nexus-deloy"){
