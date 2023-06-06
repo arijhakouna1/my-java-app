@@ -34,7 +34,7 @@ pipeline{
            withCredentials ([usernamePassword(credentialsId: 'nexus_pfe_key', passwordVariable: 'arij', usernameVariable: 'admin')]) {
                  /* sh 'Fichier = "/var/jenkins_home/workspace/my_project/target/my-app-1.0-SNAPSHOT.jar"'*/
                  /* sh ' Path_nexus = "http://192.168.1.141:8081/repository/depot_soutenance/"'*/
-                  sh 'curl -k -u admin:admin --upload-file /var/jenkins_home/workspace/my_project/target/my-app-1.0-SNAPSHOT.jar http://192.168.1.141:8081/repository/depot_soutenance/'   
+                  sh 'curl -k --upload-file /var/jenkins_home/workspace/my_project/target/my-app-1.0-SNAPSHOT.jar http://192.168.1.141:8081/repository/depot_soutenance/'   
               } }  }
 
 }
