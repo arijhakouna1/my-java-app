@@ -16,7 +16,7 @@ pipeline{
       stage("Test quality"){
          steps{
              withSonarQubeEnv('sonarqube') {
-                sh 'mvn sonar:sonar'
+                sh 'mvn -x sonar:sonar'
                 echo " I'm testing the quality of the app "
          }   } }
       stage("nexus-deloy"){
