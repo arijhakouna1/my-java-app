@@ -35,8 +35,8 @@ pipeline{
                   sh ' tar -cjf my_app.tgz $PWD/target/*.jar '
                   sh 'Fichier = "my_app.tgz"'
                   sh ' Path_nexus = "http://192.168.1.141:8081/repository/depot_soutenance/"'
-                  sh 'curl -k -u admin:admin --upload-file "$Fichier" "$Path_nexus"'   */ 
-              } }  }
+                  sh 'curl -k -u admin:admin --upload-file "$Fichier" "$Path_nexus"'   
+              } */}  }
 
 }
 }
