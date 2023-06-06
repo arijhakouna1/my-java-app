@@ -33,15 +33,9 @@ pipeline{
         }*/
               withCredentials ([usernamePassword(credentialsId: 'nexus_pfe_key', passwordVarriable: 'admin', usernameVariable: 'admin')]) {
                File= "target/*.jar"
-                URL=  ""
-                  
-              }
-      }
-  
-  }  
-     
-    
-    
+                URL=  "http://localhost:8081/repository/depot_soutenance/"
+                 sh 'curl -k -u admin:admin --upload-file "$File" "$URL"'    
+              } }  }
 
 }
 }
