@@ -31,7 +31,7 @@ pipeline{
           artifacts:[
             [artifactId: pom.artifactId, type: pom.packaging, file: artifactPat]]);
         }*/
-              withCredentials ([usernamePassword(credentialsId: 'nexus_pfe_key', passwordVarriable: 'admin', usernameVariable: 'admin')]) {
+              withCredentials ([usernamePassword(credentialsId: 'nexus_pfe_key', passwordVariable: 'admin', usernameVariable: 'admin')]) {
                sh 'Fichier = "target/*.jar"'
                sh ' Path_nexus = "http://192.168.1.141:8081/repository/depot_soutenance/"'
                  sh 'curl -k -u admin:admin --upload-file "$Fichier" "$Path_nexus"'    
