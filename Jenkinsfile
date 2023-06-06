@@ -31,6 +31,11 @@ pipeline{
           artifacts:[
             [artifactId: pom.artifactId, type: pom.packaging, file: artifactPat]]);
         }*/
+              withCredentials ([usernamePassword(credentialsId: 'nexus_pfe_key', passwordVarriable: 'admin', usernameVariable: 'admin')]) {
+               File= "target/*.jar"
+                URL=  ""
+                  
+              }
       }
   
   }  
