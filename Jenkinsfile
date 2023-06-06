@@ -1,10 +1,6 @@
 pipeline{
     agent any
     tools { maven 'maven' }
-    environments {
-     URL = string
-     File = string
-    }
   stages{
     
       stage("build"){
