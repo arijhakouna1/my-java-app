@@ -22,7 +22,7 @@ pipeline{
       stage("nexus-deloy"){
           steps{
            withCredentials ([usernamePassword(credentialsId: 'nexus_pfe_key', passwordVariable: 'arij', usernameVariable: 'admin')]) {
-                  sh 'curl -k -u admin:arij --upload-file /var/jenkins_home/workspace/my_project/target/my-app-1.0-SNAPSHOT.jar -x POST http://192.168.1.141:8081/repository/depot_soutenance/'
+                  sh 'curl -v -k -u admin:arij --upload-file /var/jenkins_home/workspace/my_project/target/my-app-1.0-SNAPSHOT.jar --resolve 192.168.1.141:8081 http://192.168.1.141:8081/repository/depot_soutenance/'
                echo " I'm pushing to nexus "
               } }  }
 
